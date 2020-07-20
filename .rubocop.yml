@@ -82,6 +82,8 @@ AllCops:
     - config/spring.rb
     - db/schema.rb
     - db/migrate/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
     - submodules/zengin-code/bin/**
     - vendor/bundle/**/*
     - node_modules/**/*

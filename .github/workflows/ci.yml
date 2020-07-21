@@ -1,0 +1,72 @@
+name: Continus Integration
+on:
+  push:
+    paths-ignore:
+      - README.md
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      PGHOST: 127.0.0.1
+      PGUSER: eclea
+
+    services:
+      postgres:
+        image: postgres:9.6-alpine
+        env:
+          POSTGRES_USER: eclea
+          POSTGRES_PASSWORD: eclea_baseball_score
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.6"
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Cache node modules
+        uses: actions/cache@preview
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: bundle install and build database
+        env:
+          PGHOST: 127.0.0.1
+          PGUSER: eclea
+          RAILS_ENV: test
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+      - name: yarn install
+        run:  yarn install --check-files
+      - name: run rspec
+        run: bundle exec rspec
+
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.6"
+      - name: run rubocop
+        run: gem install rubocop
+      - name: run rubocop
+        run: bundle exec rubocop

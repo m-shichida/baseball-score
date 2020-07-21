@@ -67,10 +67,22 @@ Style/RedundantRegexpEscape:
 Style/SlicingWithRange:
   Enabled: true
 
+# 個別にfalseや設定をする
+Layout/HashAlignment:
+  Exclude:
+    - lib/tasks/auto_annotate_models.rake
+
+Metrics/BlockLength:
+  Max: 50
+
+# 以下はfalse
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
   Enabled: false
 
 AllCops:

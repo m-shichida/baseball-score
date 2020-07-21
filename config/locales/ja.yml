@@ -220,6 +220,9 @@ ja:
     button:
       search: 検索
       registrate: 登録
+      decide: 決定
+      registrate_team: チーム登録
     search_by:
+      team_name: チーム名で検索
       player_full_name: 氏名で検索
       player_number: 背番号で検索

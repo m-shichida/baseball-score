@@ -25,6 +25,10 @@ class Player < ApplicationRecord
 
   scope :same_team_players, ->(team_id) { where(team_id: team_id) }
 
+  def full_name
+    "#{ last_name } #{ first_name }"
+  end
+
   private
 
   def invalid_same_number

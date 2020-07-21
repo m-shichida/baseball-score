@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      team: 'チーム'
+      team: チーム
     attributes:
       team:
-        name: 'チーム名'
+        name: チーム名

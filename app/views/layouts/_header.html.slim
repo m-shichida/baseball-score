@@ -1,0 +1,11 @@
+header.bg-gray-700
+  article.container.mx-auto.p-4.flex.justify-between
+    h2.text-base.text-gray-100 = t("page_title.#{ controller_name }")
+    nav.text-gray-100
+      ul.flex
+        li
+          = link_to t('view.header.players'), players_path
+        li.ml-4
+          = link_to t('view.header.teams'), teams_path
+        li.ml-4
+          = link_to t('view.header.team_scores'), root_path

@@ -1,3 +1,7 @@
 class TeamsController < ApplicationController
-  def index; end
+  def index
+    @teams = Team.all
+  end
+
+  def create; end
 end

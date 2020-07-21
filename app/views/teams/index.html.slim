@@ -1,11 +1,43 @@
-.max-w-sm.mx-auto.bg-white.shadow-lg.rounded-lg.overflow-hidden
-  .sm:flex.sm:items-center.px-6.py-4
-    img.block.mx-auto.sm:mx-0.sm:flex-shrink-0.h-16.sm:h-24.rounded-full src="https://randomuser.me/api/portraits/women/17.jpg" alt="Woman's Face"
-    .mt-4.sm:mt-0.sm:ml-4.text-center.sm:text-left
-      p.text-xl.leading-tight
-        | Erin Lindford
-      p.text-sm.leading-tight.text-gray-600
-        | Customer Support Specialist
-      .mt-4
-        button.text-purple-500.hover:text-white.hover:bg-purple-500.border.border-purple-500.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal
-          | Message
+form.flex.justify-between.w-full.mt-6
+  input.shadow.border.rounded.block.appearance-none.text-gray-700.text-sm.font-bold.p-2 class='w-11/12 focus:shadow-outline focus:outline-none' placeholder="#{ t('view.search_by.team_name') }"
+  button.rounded.bg-blue-500.text-white.font-bold.ml-2.py-2.px-4 class='hover:bg-blue-700 focus:outline-none focus:shadow-outline'
+    = t('view.button.search')
+
+.mt-6
+  label.block.w-full.text-gray-700.text-xs.font-bold
+    | 自チーム設定
+
+  div.flex.justify-between.mt-1
+    div.inline-block.flex
+      select.block.bg-white.border.border-gray-400.px-4.py-2.rounded.shadow class='hover:border-gray-500 focus:outline-none focus:shadow-outline'
+        <option>埼玉西武ライオンズ</option>
+        <option>楽天ゴールデンイーグルス</option>
+        <option>千葉ロッテマリーンズ</option>
+
+      button.rounded.bg-gray-600.text-white.font-bold.ml-2.py-2.px-4 class='hover:bg-gray-700 focus:outline-none focus:shadow-outline' disabled='false'
+        = t('view.button.decide')
+
+    button.rounded.bg-blue-500.text-white.font-bold.ml-2.py-2.px-4 class='hover:bg-blue-700 focus:outline-none focus:shadow-outline'
+      = t('view.button.registrate_team')
+
+.registrate-team.mt-6
+  label.block.w-full.text-gray-700.text-xs.font-bold
+    = t('view.button.registrate_team')
+  form.flex.justify-between.w-full.mt-1
+    input.shadow.border.rounded.block.appearance-none.text-gray-700.text-sm.font-bold.p-2 class='w-11/12 focus:shadow-outline focus:outline-none' placeholder="#{ t('activerecord.attributes.team.name') }"
+    button.rounded.bg-blue-500.text-white.font-bold.ml-2.py-2.px-4 class='hover:bg-blue-700 focus:outline-none focus:shadow-outline'
+      = t('view.button.registrate')
+
+table.table-fixed.border-collapse.w-full.mt-6
+  thead
+    tr.bg-gray-300
+      th.p-1.border.text-sm class='w-11/12' = t('activerecord.attributes.team.name')
+      th.p-1.border
+  tbody
+    - @teams.each do |team|
+      tr class='hover:bg-green-100'
+        td.border.px-2.py-1 = team.name
+        td.border.px-2.py-1
+          span.flex.justify-around
+            = render 'icons/edit', size: 'w-6', optional_class: 'text-green-600'
+            = render 'icons/trash', size: 'w-6', optional_class: 'text-red-600'

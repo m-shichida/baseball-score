@@ -1,0 +1,48 @@
+form.flex.justify-between.mt-6
+  input.shadow.border.rounded.appearance-none.text-gray-700.text-sm.font-bold.p-2 class='w-10/12 focus:shadow-outline focus:outline-none' placeholder="#{ t('view.search_by.player_full_name') }"
+  input.shadow.border.rounded.appearance-none.text-gray-700.text-sm.font-bold.p-2 class='w-1/12 focus:shadow-outline focus:outline-none' placeholder="#{ t('view.search_by.player_number') }"
+  button.rounded.bg-blue-500.text-white.font-bold.py-2.px-4 class='hover:bg-blue-700 focus:outline-none focus:shadow-outline'
+    = t('view.button.search')
+
+.mt-6
+  div.flex.justify-end
+    button.rounded.bg-blue-500.text-white.font-bold.py-2.px-4 class='hover:bg-blue-700 focus:outline-none focus:shadow-outline'
+      = "#{ t('activerecord.models.player') }#{ t('view.button.registrate') }"
+
+.registrate-team.mt-2
+  form.flex.justify-end
+    .flex
+      div
+        label.text-gray-700.text-xs.font-bold
+          = t('activerecord.attributes.player.last_name')
+        input.shadow.border.rounded.block.appearance-none.text-gray-700.text-sm.font-bold.p-2 class='w-11/12 focus:shadow-outline focus:outline-none'
+
+      div
+        label.text-gray-700.text-xs.font-bold
+          = t('activerecord.attributes.player.first_name')
+        input.shadow.border.rounded.block.appearance-none.text-gray-700.text-sm.font-bold.p-2 class='w-11/12 focus:shadow-outline focus:outline-none'
+
+      div
+        label.text-gray-700.text-xs.font-bold
+          = t('activerecord.attributes.player.number')
+        input.shadow.border.rounded.block.appearance-none.text-gray-700.text-sm.font-bold.p-2 class='w-11/12 focus:shadow-outline focus:outline-none'
+
+    span.flex.flex-col.justify-end
+      button.rounded.bg-blue-500.text-white.font-bold.py-2.px-4.mt-2 class='hover:bg-blue-700 focus:outline-none focus:shadow-outline'
+        = t('view.button.registrate')
+
+table.table-fixed.border-collapse.w-full.mt-6
+  thead
+    tr.bg-gray-300
+      th.p-1.border class='w-1/12' = t('activerecord.attributes.player.number')
+      th.p-1.border class='w-10/12' = t('activerecord.attributes.player.full_name')
+      th.p-1.border
+  tbody
+    - @players.each do |player|
+      tr class='hover:bg-green-100'
+        td.border.px-2.py-1.text-center = player.number
+        td.border.px-2.py-1 = player.full_name
+        td.border.px-2.py-1
+          span.flex.justify-around
+            = render 'icons/edit', size: 'w-6', optional_class: 'text-green-600'
+            = render 'icons/trash', size: 'w-6', optional_class: 'text-red-600'

@@ -7,10 +7,12 @@ on:
 jobs:
   rspec:
     runs-on: ubuntu-latest
-    env:
-      RAILS_ENV: test
-      PGHOST: 127.0.0.1
-      PGUSER: eclea
+    container:
+      image: ruby:2.6.5
+      env:
+        RAILS_ENV: test
+        PGHOST: 127.0.0.1
+        PGUSER: eclea
 
     services:
       postgres:
@@ -24,10 +26,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: "2.6"
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
@@ -60,13 +58,13 @@ jobs:
 
   rubocop:
     runs-on: ubuntu-latest
+    container:
+      image: ruby:2.6.5
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: "2.6"
-      - name: run rubocop
-        run: gem install rubocop
+      - name: install rubocop
+        run: |
+          gem install bundler
+          gem install rubocop
       - name: run rubocop
         run: bundle exec rubocop

@@ -3,6 +3,5 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
-  def create
-  end
+  def create; end
 end

@@ -1,3 +1,6 @@
+# https://qiita.com/d-mato/items/ec4a5c562061f8f54724
+# https://qiita.com/NaokiIshimura/items/8203f74f8dfd5f6b87a0
+
 name: Continus Integration
 on:
   push:
@@ -26,7 +29,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - name: cache bundle
+        uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -51,8 +55,18 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create
           bundle exec rails db:migrate
-      - name: yarn install
-        run:  yarn install --check-files
+      # 公式のyarnインストールに準ずる
+      - name: install yarn
+        run: |
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          apt-get update && apt-get install -y yarn
+      - name: run yarn install
+        run: |
+          bundle exec rails webpacker:install
+          yarn install --check-files
+      - name: run rubocop
+        run: bundle exec rubocop
       - name: run rspec
         run: bundle exec rspec
 

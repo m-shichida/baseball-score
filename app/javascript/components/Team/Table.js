@@ -4,13 +4,11 @@ import axios from 'axios';
 import EditButton from '../Button/Edit';
 import TrashButton from '../Button/Trash';
 
-const POST_TEAM_URL = 'localhost:4000'
-
 const Table = ({ teams }) => {
   const [name, setName] = useState('');
   const handleClick = (e) => {
     e.preventDefault();
-    axios.post(`${POST_TEAM_URL}/teams`, { params: { name }})
+    axios.post(`${gon.root_url}teams`, { params: { name }})
   };
 
   return (
@@ -35,7 +33,7 @@ const Table = ({ teams }) => {
         </thead>
         <tbody>
           {teams.map((team, i) => (
-            <tr class='hover:bg-green-100' key={i}>
+            <tr className='hover:bg-green-100' key={i}>
               <td className='border px-2 py-1'>{team.name}</td>
               <td className='border px-2 py-1'>
                 <span className='flex justify-around'>

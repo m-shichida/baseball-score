@@ -15,6 +15,8 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'annotate'
 gem 'react-rails'
+gem 'dotenv-rails'
+gem 'gon'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

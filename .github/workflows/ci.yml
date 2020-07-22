@@ -1,0 +1,90 @@
+# https://qiita.com/d-mato/items/ec4a5c562061f8f54724
+# https://qiita.com/NaokiIshimura/items/8203f74f8dfd5f6b87a0
+
+name: Continus Integration
+on:
+  push:
+    paths-ignore:
+      - README.md
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:2.6.5
+      env:
+        RAILS_ENV: test
+        PGHOST: postgres
+        PGUSER: eclea
+
+    services:
+      postgres:
+        image: postgres:9.6-alpine
+        env:
+          POSTGRES_USER: eclea
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: cache bundle
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Cache node modules
+        uses: actions/cache@preview
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: bundle install
+        run: |
+          apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: build database
+        env:
+          PGHOST: postgres
+          PGUSER: eclea
+          RAILS_ENV: test
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+      # 公式のyarnインストールに準ずる
+      - name: install yarn
+        run: |
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          apt-get update && apt-get install -y yarn
+      - name: run yarn install
+        run: |
+          bundle exec rails webpacker:install
+          yarn install --check-files
+      - name: run rspec
+        run: bundle exec rspec
+
+  rubocop:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:2.6.5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: bundle install
+        run: |
+          gem install bundler
+          bundle install
+      - name: run rubocop
+        run: bundle exec rubocop

@@ -43,16 +43,18 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: bundle install and build database
-        env:
-          PGHOST: postgres
-          PGUSER: eclea
-          RAILS_ENV: test
+      - name: bundle install
         run: |
           apt-get -yqq install libpq-dev
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+      - name: build database
+        env:
+          PGHOST: postgres
+          PGUSER: eclea
+          RAILS_ENV: test
+        run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
       # 公式のyarnインストールに準ずる
@@ -65,8 +67,6 @@ jobs:
         run: |
           bundle exec rails webpacker:install
           yarn install --check-files
-      - name: run rubocop
-        run: bundle exec rubocop
       - name: run rspec
         run: bundle exec rspec
 
@@ -82,7 +82,7 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - name: install rubocop
+      - name: bundle install
         run: |
           gem install bundler
           bundle install

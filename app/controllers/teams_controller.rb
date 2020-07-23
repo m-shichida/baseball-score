@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-  # 登録・更新・削除は全て一覧で行うので非同期で処理する
+  # 今はセッション管理してないのでこれで行くけどセッション管理するようになれば外す
+  protect_from_forgery except: %i[create update destroy]
 
   def index
     @teams = Team.all
@@ -7,17 +8,15 @@ class TeamsController < ApplicationController
 
   def create
     team = Team.new(permit_params)
-    if team.save
+    if team.valid?
+      team.save
       render json: {
         status: 200,
         message: 'チームを登録しました',
-        team: team.as_json,
+        team: team.as_json
       }
     else
-      render json: {
-        status: 400,
-        message: 'チーム登録に失敗しました'
-      }
+      render json: error_hash('チーム登録に失敗しました')
     end
   end
 
@@ -30,25 +29,21 @@ class TeamsController < ApplicationController
         team: team.as_json
       }
     else
-      render json: {
-        status: 400,
-        message: '更新に失敗しました'
-      }
+      render json: error_hash('更新に失敗しました')
     end
   end
 
   def destroy
     team = Team.find(params[:id])
-    if team.destroy(permit_params)
+    return if team.base?
+
+    if team.destroy
       render json: {
         status: 200,
         message: 'チームを削除しました'
       }
     else
-      render json: {
-        status: 400,
-        message: 'チームの削除に失敗しました'
-      }
+      render json: error_hash('チームの削除に失敗しました')
     end
   end
 
@@ -56,5 +51,12 @@ class TeamsController < ApplicationController
 
   def permit_params
     params.require(:team).permit(:name)
+  end
+
+  def error_hash(message)
+    {
+      status: 400,
+      message: message
+    }
   end
 end

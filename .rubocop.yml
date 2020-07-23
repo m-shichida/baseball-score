@@ -75,6 +75,9 @@ Layout/HashAlignment:
 Metrics/BlockLength:
   Max: 50
 
+Metrics/MethodLength:
+  Max: 15
+
 # 以下はfalse
 Style/FrozenStringLiteralComment:
   Enabled: false

@@ -24,4 +24,6 @@ if Rails.env.development?
   main_team.players.create(last_name: '栗山', first_name: '巧', number: 1)
   main_team.players.create(last_name: '木村', first_name: '文紀', number: 9)
   main_team.players.create(last_name: '今井', first_name: '達也', number: 11)
+else
+  Team.create(name: 'ECLEA', base: true)
 end

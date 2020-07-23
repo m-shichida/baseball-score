@@ -17,6 +17,7 @@ gem 'annotate'
 gem 'react-rails'
 gem 'dotenv-rails'
 gem 'gon'
+gem 'mini_racer'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

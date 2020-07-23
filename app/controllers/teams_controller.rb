@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   before_action :not_base_team_destroy, only: %i[destroy]
 
   def index
-    @teams = Team.all
+    @teams = Team.all.sort_by { |team| team.base ? 0 : 1 }
   end
 
   def create
@@ -62,11 +62,8 @@ class TeamsController < ApplicationController
 
   def not_base_team_destroy
     team = Team.find(params[:id])
-    if team.base?
-      render json: {
-        status: 400,
-        message: '自チームを削除することはできません'
-      }
-    end
+    return unless team.base?
+
+    render error_hash('自チームを削除することはできません')
   end
 end

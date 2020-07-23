@@ -3,16 +3,16 @@ form.flex.justify-between.w-full.mt-6
   button.rounded.bg-blue-500.text-white.font-bold.ml-2.py-2.px-4 class='hover:bg-blue-700 focus:outline-none focus:shadow-outline'
     = t('view.button.search')
 
-.mt-6
-  label.block.w-full.text-gray-700.text-xs.font-bold
-    | 自チーム設定
+/ .mt-6
+/   label.block.w-full.text-gray-700.text-xs.font-bold
+/     | 自チーム設定
 
-  div.flex.justify-between.mt-1
-    div.inline-block.flex
-      = select_tag(:current_team, options_from_collection_for_select(@teams, 'id', 'name'), class: 'block bg-white border border-gray-400 px-4 py-2 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline')
+/   div.flex.justify-between.mt-1
+/     div.inline-block.flex
+/       = select_tag(:current_team, options_from_collection_for_select(@teams, 'id', 'name'), class: 'block bg-white border border-gray-400 px-4 py-2 rounded shadow hover:border-gray-500 focus:outline-none focus:shadow-outline')
 
-      button.rounded.bg-gray-600.text-white.font-bold.ml-2.py-2.px-4 class='hover:bg-gray-700 focus:outline-none focus:shadow-outline' disabled='false'
-        = t('view.button.decide')
+/       button.rounded.bg-gray-600.text-white.font-bold.ml-2.py-2.px-4 class='hover:bg-gray-700 focus:outline-none focus:shadow-outline' disabled='false'
+/         = t('view.button.decide')
 
 / テーブル周りはreactで処理する
 .mt-6

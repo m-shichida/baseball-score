@@ -220,9 +220,19 @@ ja:
     button:
       search: 検索
       registrate: 登録
+      update: 更新
       decide: 決定
       registrate_team: チーム登録
     search_by:
       team_name: チーム名で検索
       player_full_name: 氏名で検索
       player_number: 背番号で検索
+    flash:
+      registrate: "%{name}を登録しました"
+      update: "%{name}を更新しました"
+      delete: "%{name}を削除しました"
+      error_registrate: 登録に失敗しました
+      error_update: 更新に失敗しました
+      error_destroy: 削除に失敗しました
+    confirm:
+      delete: 削除しますか？

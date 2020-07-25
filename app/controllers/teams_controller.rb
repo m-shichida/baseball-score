@@ -40,10 +40,10 @@ class TeamsController < ApplicationController
     if team.destroy
       render json: {
         status: 200,
-        message: 'チームを削除しました'
+        message: '削除しました'
       }
     else
-      render json: error_hash('チームの削除に失敗しました')
+      render json: error_hash('削除に失敗しました')
     end
   end
 

@@ -78,6 +78,9 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 15
 
+Metrics/AbcSize:
+  Max: 20
+
 # 以下はfalse
 Style/FrozenStringLiteralComment:
   Enabled: false

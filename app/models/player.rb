@@ -32,7 +32,7 @@ class Player < ApplicationRecord
   private
 
   def invalid_same_number
-    return unless Player.same_team_players(team_id).pluck(:number).include?(number)
+    return unless Player.same_team_players(team_id).where.not(id: id).pluck(:number).include?(number)
 
     errors[:base] << I18n.t('custom_errors.invalid_same_player_number')
   end

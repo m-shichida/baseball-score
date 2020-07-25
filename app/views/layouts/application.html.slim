@@ -10,5 +10,16 @@ html
   body
     = render 'layouts/header'
     .container.mx-auto.px-4
+      #alert.mt-4
+        - flash.each do |key, value|
+          - if key == 'notice'
+            = content_tag(:div, class: 'bg-teal-200 border border-teal-200 text-teal-700 px-4 py-3 rounded relative') do
+              span class='block sm:inline'
+                = value.html_safe
+          - else
+            = content_tag(:div, class: 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative')
+              span class='block sm:inline'
+                = value.html_safe
+
       = yield
     .mt-8

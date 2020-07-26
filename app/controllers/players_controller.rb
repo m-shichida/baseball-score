@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
     player = current_team.players.build(permit_params)
 
     if player.save
-      redirect_to players_path, notice: t('view.flash.registrate', name: player.full_name)
+      redirect_to players_path, notice: I18n.t('view.flash.registrate', name: player.full_name)
     else
       flash.now[:danger] = t('view.flash.error_registrate')
       render :index
@@ -21,7 +21,7 @@ class PlayersController < ApplicationController
     player = current_team.players.find(params[:id])
 
     if player.update(permit_params)
-      redirect_to players_path, notice: t('view.flash.update', name: player.full_name)
+      redirect_to players_path, notice: I18n.t('view.flash.update', name: player.full_name)
     else
       flash.now[:danger] = t('view.flash.error_update')
       render :index
@@ -31,7 +31,7 @@ class PlayersController < ApplicationController
   def destroy
     player = Player.find(params[:id])
     if player.destroy
-      redirect_to players_path, notice: t('view.flash.delete', name: player.full_name)
+      redirect_to players_path, notice: I18n.t('view.flash.delete', name: player.full_name)
     else
       flash.now[:danger] = t('view.flash.error_destroy')
       render :index

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      game: 試合
+    attributes:
+      game:
+        matched_at: 試合日
+        result: 試合結果
+        opponent_team: 相手チーム
+        own_team: 自チーム

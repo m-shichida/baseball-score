@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_000137) do
+ActiveRecord::Schema.define(version: 2020_07_26_115916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2020_07_26_000137) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["opponent_team_id"], name: "index_games_on_opponent_team_id"
     t.index ["own_team_id"], name: "index_games_on_own_team_id"
+  end
+
+  create_table "inning_scores", force: :cascade do |t|
+    t.bigint "game_id", null: false, comment: "試合ID"
+    t.bigint "team_id", null: false, comment: "チームID"
+    t.integer "score", null: false, comment: "得点"
+    t.integer "inning", null: false, comment: "イニング"
+    t.integer "order", null: false, comment: "表か裏か"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_inning_scores_on_game_id"
+    t.index ["team_id"], name: "index_inning_scores_on_team_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -45,4 +57,6 @@ ActiveRecord::Schema.define(version: 2020_07_26_000137) do
 
   add_foreign_key "games", "teams", column: "opponent_team_id"
   add_foreign_key "games", "teams", column: "own_team_id"
+  add_foreign_key "inning_scores", "games"
+  add_foreign_key "inning_scores", "teams"
 end

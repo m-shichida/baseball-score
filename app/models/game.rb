@@ -21,6 +21,8 @@
 #  fk_rails_...  (own_team_id => teams.id)
 #
 class Game < ApplicationRecord
+  has_many :inning_scores
+
   belongs_to :team
 
   validates :own_team_id, presence: true

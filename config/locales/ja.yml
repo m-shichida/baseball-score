@@ -209,15 +209,16 @@ ja:
   page_title:
     teams: チーム一覧
     players: 選手一覧
-    team_scores: チーム戦績一覧
+    games: 試合一覧
   custom_errors:
     invalid_same_player_number: 同じ背番号では登録できません
   view:
     header:
       players: 選手一覧
       teams: チーム一覧
-      team_scores: チーム戦績一覧
+      games: 試合一覧
     button:
+      new: 新規登録
       search: 検索
       registrate: 登録
       update: 更新
@@ -236,3 +237,8 @@ ja:
       error_destroy: 削除に失敗しました
     confirm:
       delete: 削除しますか？
+  enums:
+    game:
+      result:
+        win: 勝ち
+        lose: 負け

@@ -51,7 +51,7 @@ if Rails.env.development?
       'trace'                       => 'false',
       'wrapper_open'                => nil,
       'wrapper_close'               => nil,
-      'with_comment'                => 'after'
+      'with_comment'                => 'true'
     )
   end
 

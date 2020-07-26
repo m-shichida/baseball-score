@@ -1,0 +1,17 @@
+- image = Rails.env.development? ? 'seibu_logo.jpg' : 'eclea_logo.png'
+
+.mt-2
+  article class="rounded shadow max-w-md flex mx-auto p-4"
+    div
+      = image_tag(image, class: 'rounded-full w-40')
+    div.flex.flex-col.p-4
+      p.text-xl
+        = current_team.name
+      p.text-xl.mt-2
+        | 2020年度成績
+      p.text-xl.mt-2
+        | 〇〇勝〇〇敗
+
+  div.flex.justify-end
+    = link_to new_game_path, class: 'rounded bg-blue-500 text-sm text-white font-bold py-2 px-4 mt-2 hover:bg-blue-700 focus:outline-none focus:shadow-outline' do
+      = t('view.button.new')

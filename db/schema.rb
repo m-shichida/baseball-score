@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_093113) do
+ActiveRecord::Schema.define(version: 2020_07_26_000137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "own_team_id", null: false, comment: "自チーム"
+    t.bigint "opponent_team_id", null: false, comment: "相手チーム"
+    t.integer "result", null: false, comment: "勝敗結果"
+    t.datetime "matched_at", null: false, comment: "試合日"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["opponent_team_id"], name: "index_games_on_opponent_team_id"
+    t.index ["own_team_id"], name: "index_games_on_own_team_id"
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "last_name", null: false, comment: "姓"
@@ -32,4 +43,6 @@ ActiveRecord::Schema.define(version: 2020_07_21_093113) do
     t.boolean "base", default: false, null: false, comment: "成績管理をするベースチームかどうか"
   end
 
+  add_foreign_key "games", "teams", column: "opponent_team_id"
+  add_foreign_key "games", "teams", column: "own_team_id"
 end

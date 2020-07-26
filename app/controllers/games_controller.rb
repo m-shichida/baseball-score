@@ -5,6 +5,7 @@ class GamesController < ApplicationController
 
   def new
     @game = current_team.games.build
+    @opponent_teams = Team.opponent_teams
   end
 
   def create
@@ -41,6 +42,6 @@ class GamesController < ApplicationController
   private
 
   def permit_params
-    params.permit(:first_name, :last_name, :number)
+    params.permit(:own_team_id, :opponent_team_id, :result, :matched_at)
   end
 end

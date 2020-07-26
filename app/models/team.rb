@@ -13,4 +13,6 @@ class Team < ApplicationRecord
   has_many :games, class_name: 'Game', foreign_key: :own_team_id
 
   validates :name, presence: true
+
+  scope :opponent_teams, -> { where(base: false) }
 end

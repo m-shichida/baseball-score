@@ -1,0 +1,11 @@
+- url = game.new_record? ? games_path : game_path
+
+= form_with model: game, url: url do |f|
+  .block
+    = f.label :matched_at, '試合日時・対戦相手'
+  .mt-2
+    = f.date_select :matched_at, {}, { class: 'appearance-none bg-gray-100 border border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
+    = f.select :opponent_team_id, @opponent_teams.collect {|t| [ t.name, t.id ] }, {}, { class: 'appearance-none bg-gray-100 border border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
+
+  .flex.justify-end
+    = f.submit t('view.button.registrate'), class: 'rounded bg-blue-500 text-sm text-white font-bold py-2 px-4 mt-2 hover:bg-blue-700 focus:outline-none focus:shadow-outline'

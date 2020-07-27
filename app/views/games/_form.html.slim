@@ -10,5 +10,9 @@
     = f.fields_for :inning_scores, @inning_scores do |is|
       = render 'score_board_fields', f: is
 
+    / = f.fields_for :player_scores, @player_scores do |bs| とか
+    = render 'batter_score_fields'
+    = render 'pitcher_score_fields'
+
   .flex.justify-end
     = f.submit t('view.button.registrate'), class: 'rounded bg-blue-500 text-sm text-white font-bold py-2 px-4 mt-2 hover:bg-blue-700 focus:outline-none focus:shadow-outline'

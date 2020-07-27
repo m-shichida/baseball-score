@@ -34,6 +34,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
+  gem 'migration_comments'
 end
 
 group :test do

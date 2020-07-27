@@ -45,6 +45,6 @@ class GamesController < ApplicationController
 
   def permit_params
     params.permit(:own_team_id, :opponent_team_id, :result, :matched_at,
-                  inning_scores_attributes: [:id, :inning, :order, :score, :game_id, :team_id, :_destroy])
+                  inning_scores_attributes: %i[id inning order score game_id team_id _destroy])
   end
 end

@@ -25,6 +25,8 @@ class Game < ApplicationRecord
 
   belongs_to :team
 
+  accepts_nested_attributes_for :inning_scores, allow_destroy: true
+
   validates :own_team_id, presence: true
   validates :opponent_team_id, presence: true
   validates :result, presence: true

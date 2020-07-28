@@ -15,6 +15,8 @@
 #  index_players_on_team_id  (team_id)
 #
 class Player < ApplicationRecord
+  has_many :batter_score
+
   belongs_to :team
 
   validates :last_name, presence: true

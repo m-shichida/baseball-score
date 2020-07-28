@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_133946) do
+ActiveRecord::Schema.define(version: 2020_07_28_141307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "batter_scores", force: :cascade do |t|
+    t.bigint "player_id", null: false, comment: "選手ID"
+    t.integer "bats", comment: "打席数"
+    t.integer "four_dead_ball", comment: "四死球"
+    t.integer "bunt", comment: "犠打"
+    t.integer "sacrifice_fly", comment: "犠飛"
+    t.integer "score", comment: "得点"
+    t.integer "hit", comment: "安打(長打含む)"
+    t.integer "rbi", comment: "打点"
+    t.integer "strikeout", comment: "三振"
+    t.integer "steal", comment: "盗塁"
+    t.integer "two_bases", comment: "二塁打"
+    t.integer "three_bases", comment: "三塁打"
+    t.integer "homerun", comment: "本塁打"
+    t.integer "error", comment: "失策"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_batter_scores_on_player_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.bigint "own_team_id", null: false, comment: "自チーム"
@@ -63,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_133946) do
     t.boolean "base", default: false, null: false, comment: "成績管理をするベースチームかどうか"
   end
 
+  add_foreign_key "batter_scores", "players"
   add_foreign_key "games", "teams", column: "opponent_team_id"
   add_foreign_key "games", "teams", column: "own_team_id"
   add_foreign_key "inning_scores", "games"

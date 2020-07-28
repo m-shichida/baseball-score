@@ -5,7 +5,7 @@
     = f.label :matched_at, "#{ t('activerecord.attributes.game.matched_at') }・#{ t('activerecord.attributes.game.opponent_team') }"
   .mt-2
     = f.date_select :matched_at, {}, { class: 'appearance-none bg-gray-100 border text-sm border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
-    = f.select :opponent_team_id, @opponent_teams.collect {|t| [ t.name, t.id ] }, {}, { class: 'appearance-none bg-gray-100 text-sm border border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
+    = f.select :opponent_team_id, team_select_value(@opponent_teams), { include_blank: true }, { class: 'appearance-none bg-gray-100 text-sm border border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
 
   .mt-2
     table.border.table-fixed.border-collapse.text-sm

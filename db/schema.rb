@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_115916) do
+ActiveRecord::Schema.define(version: 2020_07_28_133946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 2020_07_26_115916) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_players_on_team_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name", null: false, comment: "ポジション名"
+    t.string "name_kanji", null: false, comment: "ポジション名(漢字)"
+    t.string "name_short", null: false, comment: "ポジション名(省略)"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "teams", force: :cascade do |t|

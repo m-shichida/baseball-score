@@ -226,6 +226,8 @@ ja:
       update: 更新
       decide: 決定
       registrate_team: チーム登録
+      batter_scores: 打者成績へ
+      pitcher_scores: 投手成績へ
     search_by:
       team_name: チーム名で検索
       player_full_name: 氏名で検索

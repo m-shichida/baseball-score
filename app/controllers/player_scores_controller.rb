@@ -1,3 +1,5 @@
 class PlayerScoresController < ApplicationController
-  def index; end
+  def batter_score; end
+
+  def pitcher_score; end
 end

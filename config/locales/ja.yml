@@ -241,6 +241,9 @@ ja:
       error_destroy: 削除に失敗しました
     confirm:
       delete: 削除しますか？
+    score_board:
+      team_name: チーム名
+      total_score: 計
   enums:
     game:
       result:

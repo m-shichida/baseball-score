@@ -24,9 +24,9 @@
 class InningScore < ApplicationRecord
   belongs_to :game
 
-  validates :inning, presence: true
+  validates :inning, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :order, presence: true
-  validates :score, presence: true
+  validates :score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :team_id, presence: true
   validates :game_id, presence: true
 

@@ -1,36 +1,8 @@
-/ = f.label :inning
-/ = f.text_field :inning
-.mt-2
-  table.border.table-fixed.border-collapse.text-sm
-    thead
-      tr
-        th.border.w-56 チーム名
-        th.border.w-10 1
-        th.border.w-10 2
-        th.border.w-10 3
-        th.border.w-10 4
-        th.border.w-10 5
-        th.border.w-10 6
-        th.border.w-10 7
-        th.border.w-10 計
-    tbody
-      tr.text-center
-        td.border = current_team.name
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-      tr.text-center
-        td.border.text-center 東北楽天ゴールデンイーグルス
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
-        td.border 0
+tr.text-center
+  td.border
+    = f.select :team_id, teams.map { |team| [team.name, team.id] }, { include_blank: true }, { class: 'appearance-none leading-tight focus:outline-none' }
+  - 7.times do |t|
+    td.border
+      = f.hidden_field :inning, value: t + 1
+      = f.number_field :score, class: 'w-10 text-right'
+  td.border 0

@@ -5,6 +5,7 @@ class GamesController < ApplicationController
 
   def new
     @game = current_team.games.build
+    @teams = Team.all
     @opponent_teams = Team.opponent_teams
     @inning_scores = @game.inning_scores.build
   end

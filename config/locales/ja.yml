@@ -210,6 +210,7 @@ ja:
     teams: チーム一覧
     players: 選手一覧
     games: 試合一覧
+    player_scores: 選手成績一覧
   custom_errors:
     invalid_same_player_number: 同じ背番号では登録できません
   view:
@@ -217,6 +218,7 @@ ja:
       players: 選手一覧
       teams: チーム一覧
       games: 試合一覧
+      player_scores: 選手成績一覧
     button:
       new: 新規登録
       search: 検索
@@ -224,6 +226,8 @@ ja:
       update: 更新
       decide: 決定
       registrate_team: チーム登録
+      batter_scores: 打者成績へ
+      pitcher_scores: 投手成績へ
     search_by:
       team_name: チーム名で検索
       player_full_name: 氏名で検索
@@ -237,6 +241,9 @@ ja:
       error_destroy: 削除に失敗しました
     confirm:
       delete: 削除しますか？
+    score_board:
+      team_name: チーム名
+      total_score: 計
   enums:
     game:
       result:

@@ -1,10 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# ポジション
+Position.create(name: 'ピッチャー', name_kanji: '投手', name_short: '(投)')
+Position.create(name: 'キャッチャー', name_kanji: '捕手', name_short: '(捕)')
+Position.create(name: 'ファースト', name_kanji: '一塁手', name_short: '(一)')
+Position.create(name: 'セカンド', name_kanji: '二塁手', name_short: '(二)')
+Position.create(name: 'サード', name_kanji: '三塁手', name_short: '(三)')
+Position.create(name: 'ショート', name_kanji: '遊撃手', name_short: '(遊)')
+Position.create(name: 'レフト', name_kanji: '左翼手', name_short: '(左)')
+Position.create(name: 'センター', name_kanji: '中堅手', name_short: '(中)')
+Position.create(name: 'ライト', name_kanji: '右翼手', name_short: '(右)')
 
 # 開発環境下のでのメインチーム
 if Rails.env.development?

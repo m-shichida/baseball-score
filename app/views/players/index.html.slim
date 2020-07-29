@@ -45,5 +45,3 @@ table.table-fixed.border-collapse.w-full.mt-6
             = f.text_field :first_name, placeholder: t('activerecord.attributes.player.first_name'), value: player.first_name, class: 'w-2/5 shadow block rounded appearance-none text-gray-700 text-sm font-bold p-2 focus:outline-none'
             = f.number_field :number, placeholder: t('activerecord.attributes.player.number'), value: player.number, class: 'w-1/5 shadow border rounded block appearance-none text-gray-700 text-sm font-bold p-2 focus:outline-none'
             = f.submit t('view.button.update'), class: 'rounded bg-blue-500 text-sm text-white font-bold py-2 px-4 hover:bg-blue-700 focus:outline-none focus:shadow-outline'
-
-= javascript_pack_tag 'players'

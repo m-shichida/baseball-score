@@ -2,10 +2,35 @@
 
 = form_with model: game, url: url do |f|
   .block
-    = f.label :matched_at, '試合日時・対戦相手'
+    = f.label :matched_at, "#{ t('activerecord.attributes.game.matched_at') }・#{ t('activerecord.attributes.game.opponent_team') }"
   .mt-2
-    = f.date_select :matched_at, {}, { class: 'appearance-none bg-gray-100 border border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
-    = f.select :opponent_team_id, @opponent_teams.collect {|t| [ t.name, t.id ] }, {}, { class: 'appearance-none bg-gray-100 border border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
+    = f.date_select :matched_at, {}, { class: 'appearance-none bg-gray-100 border text-sm border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
+    = f.select :opponent_team_id, team_select_value(@opponent_teams), { include_blank: true }, { class: 'appearance-none bg-gray-100 text-sm border border-gray-200 text-gray-800 py-3 px-4 rounded leading-tight focus:outline-none' }
+
+  .mt-2
+    table.border.table-fixed.border-collapse.text-sm
+      thead
+        tr
+          th.border.w-56 = t('view.score_board.team_name')
+          th.border.w-10 1
+          th.border.w-10 2
+          th.border.w-10 3
+          th.border.w-10 4
+          th.border.w-10 5
+          th.border.w-10 6
+          th.border.w-10 7
+          th.border.w-10 = t('view.score_board.total_score')
+      tbody
+        = f.fields_for :inning_scores, @inning_scores do |is|
+          = is.hidden_field :order, value: InningScore.orders[:top]
+          = render 'score_board_fields', f: is, teams: teams
+
+        = f.fields_for :inning_scores, @inning_scores do |is|
+          = is.hidden_field :order, value: InningScore.orders[:bottom]
+          = render 'score_board_fields', f: is, teams: teams
+
+    = render 'batter_score_fields'
+    = render 'pitcher_score_fields'
 
   .flex.justify-end
     = f.submit t('view.button.registrate'), class: 'rounded bg-blue-500 text-sm text-white font-bold py-2 px-4 mt-2 hover:bg-blue-700 focus:outline-none focus:shadow-outline'

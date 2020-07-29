@@ -2,13 +2,13 @@
 #
 # Table name: games
 #
-#  id                           :bigint           not null, primary key
-#  matched_at(試合日)           :datetime         not null
-#  result(勝敗結果)             :integer          not null
-#  created_at                   :datetime         not null
-#  updated_at                   :datetime         not null
-#  opponent_team_id(相手チーム) :bigint           not null
-#  own_team_id(自チーム)        :bigint           not null
+#  id               :bigint           not null, primary key
+#  matched_at       :datetime         not null              # 試合日
+#  result           :integer          not null              # 勝敗結果
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  opponent_team_id :bigint           not null              # 相手チーム
+#  own_team_id      :bigint           not null              # 自チーム
 #
 # Indexes
 #
@@ -21,7 +21,11 @@
 #  fk_rails_...  (own_team_id => teams.id)
 #
 class Game < ApplicationRecord
+  has_many :inning_scores
+
   belongs_to :team
+
+  accepts_nested_attributes_for :inning_scores, allow_destroy: true
 
   validates :own_team_id, presence: true
   validates :opponent_team_id, presence: true

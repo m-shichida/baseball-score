@@ -1,0 +1,41 @@
+.mt-2
+  = link_to batter_score_player_scores_path do
+    button class='rounded bg-blue-500 text-sm text-white font-bold py-2 px-4 hover:bg-blue-700 focus:outline-none focus:shadow-outline'
+      = t('view.button.batter_scores')
+
+.mt-4.p-2.border.w-full
+  table.table-fixed.border-collapse.text-sm
+    thead
+      tr
+        th.border.p-1 背番号
+        th.border.p-1 選手
+        th.border.p-1 完了イニング
+        th.border.p-1 途中アウト
+        th.border.p-1 打者数
+        th.border.p-1 投球数
+        th.border.p-1 被安打
+        th.border.p-1 被本塁打
+        th.border.p-1 奪三振
+        th.border.p-1 与四死球
+        th.border.p-1 自責点
+        th.border.p-1 勝利
+        th.border.p-1 敗戦
+        th.border.p-1 セーブ
+        th.border.p-1 ホールドポイント
+        th.border.p-1 投球アウト
+        th.border.p-1 防御率
+        th.border.p-1 被打率
+        th.border.p-1 奪三振率
+    tbody
+      tr
+        td.text-center.p-1
+        td.border.text-center.p-1 今井 達也
+      tr
+        td.text-center.p-1
+        td.border.text-center.p-1 平良 海馬
+      tr
+        td.text-center.p-1
+        td.border.text-center.p-1 ギャレット
+      tr
+        td.text-center.p-1
+        td.border.text-center.p-1 増田 達至

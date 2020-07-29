@@ -1,0 +1,8 @@
+tr.text-center
+  td.border
+    = f.select :team_id, team_select_value(teams), { include_blank: true }, { class: 'appearance-none leading-tight focus:outline-none' }
+  - 7.times do |t|
+    td.border
+      = f.hidden_field :inning, value: t + 1
+      = f.number_field :score, class: 'w-10 text-right'
+  td.border 0

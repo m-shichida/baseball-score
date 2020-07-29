@@ -2,13 +2,13 @@
 #
 # Table name: players
 #
-#  id                          :bigint           not null, primary key
-#  first_name(名)              :string           not null
-#  last_name(姓)               :string           not null
-#  number(背番号)              :integer          not null
-#  created_at                  :datetime         not null
-#  updated_at                  :datetime         not null
-#  team_id(紐付け先のチームid) :bigint           not null
+#  id         :bigint           not null, primary key
+#  first_name :string           not null              # 名
+#  last_name  :string           not null              # 姓
+#  number     :integer          not null              # 背番号
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  team_id    :bigint           not null              # 紐付け先のチームid
 #
 # Indexes
 #

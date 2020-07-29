@@ -5,7 +5,9 @@ class GamesController < ApplicationController
 
   def new
     @game = current_team.games.build
+    @teams = Team.all
     @opponent_teams = Team.opponent_teams
+    @inning_scores = @game.inning_scores.build
   end
 
   def create
@@ -19,6 +21,7 @@ class GamesController < ApplicationController
 
   def edit
     @game = current_team.games.find(params[:id])
+    @inning_scores = @game.inning_scores
   end
 
   def update
@@ -42,6 +45,7 @@ class GamesController < ApplicationController
   private
 
   def permit_params
-    params.permit(:own_team_id, :opponent_team_id, :result, :matched_at)
+    params.permit(:own_team_id, :opponent_team_id, :result, :matched_at,
+                  inning_scores_attributes: %i[id inning order score game_id team_id _destroy])
   end
 end

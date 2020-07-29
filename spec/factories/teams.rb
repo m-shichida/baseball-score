@@ -2,11 +2,11 @@
 #
 # Table name: teams
 #
-#  id                                       :bigint           not null, primary key
-#  base(成績管理をするベースチームかどうか) :boolean          default(FALSE), not null
-#  name(チーム名)                           :string           not null
-#  created_at                               :datetime         not null
-#  updated_at                               :datetime         not null
+#  id         :bigint           not null, primary key
+#  base       :boolean          default(FALSE), not null # 成績管理をするベースチームかどうか
+#  name       :string           not null                 # チーム名
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 FactoryBot.define do
   factory :team do

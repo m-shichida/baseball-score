@@ -29,7 +29,6 @@
           = is.hidden_field :order, value: InningScore.orders[:bottom]
           = render 'score_board_fields', f: is, teams: teams
 
-    / = f.fields_for :player_scores, @player_scores do |bs| とか
     = render 'batter_score_fields'
     = render 'pitcher_score_fields'
 

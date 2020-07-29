@@ -24,6 +24,5 @@
 #
 FactoryBot.define do
   factory :game_batting_score do
-    
   end
 end

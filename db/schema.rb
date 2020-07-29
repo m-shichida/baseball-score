@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_141307) do
+ActiveRecord::Schema.define(version: 2020_07_28_143234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,27 @@ ActiveRecord::Schema.define(version: 2020_07_28_141307) do
     t.index ["team_id"], name: "index_inning_scores_on_team_id"
   end
 
+  create_table "pitcher_scores", force: :cascade do |t|
+    t.bigint "player_id", null: false, comment: "選手ID"
+    t.integer "completion_inning", comment: "完了イニング"
+    t.integer "out_count", comment: "途中アウト"
+    t.integer "batter_count", comment: "対戦打者数"
+    t.integer "pitching_count", comment: "投球数"
+    t.integer "hit_count", comment: "被安打数"
+    t.integer "homerun_count", comment: "被本塁打"
+    t.integer "strikeout_count", comment: "奪三振数"
+    t.integer "walk_dead_ball", comment: "与四死球"
+    t.integer "self_responsibility", comment: "自責点"
+    t.integer "wins", comment: "勝利数"
+    t.integer "losses", comment: "敗戦数"
+    t.integer "save_count", comment: "セーブ数"
+    t.integer "hold_point", comment: "ホールドポイント"
+    t.integer "all_out_count", comment: "投球アウト"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_pitcher_scores_on_player_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "last_name", null: false, comment: "姓"
     t.string "first_name", null: false, comment: "名"
@@ -88,4 +109,5 @@ ActiveRecord::Schema.define(version: 2020_07_28_141307) do
   add_foreign_key "games", "teams", column: "own_team_id"
   add_foreign_key "inning_scores", "games"
   add_foreign_key "inning_scores", "teams"
+  add_foreign_key "pitcher_scores", "players"
 end

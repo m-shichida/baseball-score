@@ -29,8 +29,51 @@
           = is.hidden_field :order, value: InningScore.orders[:bottom]
           = render 'score_board_fields', f: is, teams: teams
 
-    = render 'batter_score_fields'
-    = render 'pitcher_score_fields'
+  .mt-2.p-2.border.w-full
+    table.table-fixed.border-collapse.text-sm
+      thead
+        tr
+          th
+          th.border.p-1 = t_ar('GameBattingScore.order')
+          th.border.p-1 = t_ar('GameBattingScore.position_id')
+          th.border.p-1 = t_ar('BatterScore.player_id')
+          th.border.p-1 = t_ar('BatterScore.bats')
+          th.border.p-1 = t_ar('BatterScore.four_dead_ball')
+          th.border.p-1 = t_ar('BatterScore.bunt')
+          th.border.p-1 = t_ar('BatterScore.sacrifice_fly')
+          th.border.p-1 = t_ar('BatterScore.score')
+          th.border.p-1 = t_ar('BatterScore.hit')
+          th.border.p-1 = t_ar('BatterScore.rbi')
+          th.border.p-1 = t_ar('BatterScore.strikeout')
+          th.border.p-1 = t_ar('BatterScore.steal')
+          th.border.p-1 = t_ar('BatterScore.two_bases')
+          th.border.p-1 = t_ar('BatterScore.three_bases')
+          th.border.p-1 = t_ar('BatterScore.homerun')
+          th.border.p-1 = t_ar('BatterScore.error')
+      tbody
+        = render 'batter_score_fields'
+
+  .mt-2.p-2.border.w-full
+    table.table-fixed.border-collapse.text-sm
+      thead
+        tr
+          th
+          th.border.p-1 = t_ar('PitcherScore.player_id')
+          th.border.p-1 = t_ar('PitcherScore.completion_inning')
+          th.border.p-1 = t_ar('PitcherScore.out_count')
+          th.border.p-1 = t_ar('PitcherScore.batter_count')
+          th.border.p-1 = t_ar('PitcherScore.pitching_count')
+          th.border.p-1 = t_ar('PitcherScore.hit')
+          th.border.p-1 = t_ar('PitcherScore.homerun')
+          th.border.p-1 = t_ar('PitcherScore.strikeout')
+          th.border.p-1 = t_ar('PitcherScore.walk_dead_ball')
+          th.border.p-1 = t_ar('PitcherScore.self_responsibility')
+          th.border.p-1 = t_ar('PitcherScore.wins')
+          th.border.p-1 = t_ar('PitcherScore.losses')
+          th.border.p-1 = t_ar('PitcherScore.save_count')
+          th.border.p-1 = t_ar('PitcherScore.hold_point')
+      tbody
+        = render 'pitcher_score_fields'
 
   .flex.justify-end
     = f.submit t('view.button.registrate'), class: 'rounded bg-blue-500 text-sm text-white font-bold py-2 px-4 mt-2 hover:bg-blue-700 focus:outline-none focus:shadow-outline'

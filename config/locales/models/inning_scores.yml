@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      inning_score: イニング成績
+    attributes:
+      inning_score:
+        inning: イニング
+        order: 表か裏か
+        score: 得点
+        game_id: 試合
+        team_id: チーム

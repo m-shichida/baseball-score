@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      position: 試合
+    attributes:
+      position:
+        name: ポジション名
+        name_kanji: ポジション名(漢字)
+        name_short: ポジション名(省略)

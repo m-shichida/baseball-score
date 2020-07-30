@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      pitcher_score: 打者成績
+    attributes:
+      pitcher_score:
+        player_id: 選手
+        all_out_count: 投球アウト
+        batter_count: 対戦打者数
+        completion_inning: 完了イニング
+        hit: 被安打数
+        hold_point: ホールドポイント
+        homerun: 被本塁打
+        losses: 敗戦数
+        out_count: 途中アウト
+        pitching_count: 投球数
+        save_count: セーブ数
+        self_responsibility: 自責点
+        strikeout: 奪三振数
+        walk_dead_ball: 与四死球
+        wins: 勝利数

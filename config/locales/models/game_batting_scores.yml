@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      game_batting_score: 打者成績
+    attributes:
+      game_batting_score:
+        order: 打順
+        batter_score_id: 打者成績
+        game_id: 試合
+        position_id: ポジション

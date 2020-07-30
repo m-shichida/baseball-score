@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      batter_score: 打者成績
+    attributes:
+      batter_score:
+        player_id: 選手
+        bats: 打席数
+        bunt: 犠打
+        error: 失策
+        four_dead_ball: 四死球
+        hit: 安打(長打含む)
+        homerun: 本塁打
+        rbi: 打点
+        sacrifice_fly: 犠飛
+        score: 得点
+        steal: 盗塁
+        strikeout: 三振
+        two_bases: 二塁打
+        three_bases: 三塁打

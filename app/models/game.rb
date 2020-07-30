@@ -22,10 +22,12 @@
 #
 class Game < ApplicationRecord
   has_many :inning_scores
+  has_many :batter_scores
 
   belongs_to :team
 
   accepts_nested_attributes_for :inning_scores, allow_destroy: true
+  accepts_nested_attributes_for :batter_scores, allow_destroy: true
 
   validates :own_team_id, presence: true
   validates :opponent_team_id, presence: true

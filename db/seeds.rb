@@ -8,6 +8,7 @@ Position.create(name: 'ショート', name_kanji: '遊撃手', name_short: '(遊
 Position.create(name: 'レフト', name_kanji: '左翼手', name_short: '(左)')
 Position.create(name: 'センター', name_kanji: '中堅手', name_short: '(中)')
 Position.create(name: 'ライト', name_kanji: '右翼手', name_short: '(右)')
+Position.create(name: 'DH', name_kanji: '指名打者', name_short: '(指)')
 
 # 開発環境下のでのメインチーム
 if Rails.env.development?

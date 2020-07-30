@@ -51,7 +51,9 @@
           th.border.p-1 = t_ar('BatterScore.homerun')
           th.border.p-1 = t_ar('BatterScore.error')
       tbody
-        = render 'batter_score_fields'
+        - 9.times do |t|
+          = f.fields_for :batter_scores, @batter_scores do |bs|
+            = render 'batter_score_fields', f: bs, order: t + 1
 
   .mt-2.p-2.border.w-full
     table.table-fixed.border-collapse.text-sm

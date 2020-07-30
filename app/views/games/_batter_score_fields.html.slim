@@ -1,54 +1,34 @@
 tr
   td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 1
   td.border.text-center.p-1
-    | (中)
-  td.border.text-center.p-1.w-24 鈴木 将平
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 2
+    = order
   td.border.text-center.p-1
-    | (遊)
-  td.border.text-center.p-1 源田 壮亮
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 3
+    = f.select :position_id, position_select_value, {include_blank: true}, {class: 'w-full bg-gray-200 px-6 rounded appearance-none leading-tight focus:outline-none'}
   td.border.text-center.p-1
-    | (二)
-  td.border.text-center.p-1 外崎 修汰
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 4
+    = f.select :player_id, player_select_value, {include_blank: true}, {class: 'w-full bg-gray-200 px-2 rounded appearance-none leading-tight focus:outline-none'}
   td.border.text-center.p-1
-    | (一)
-  td.border.text-center.p-1 山川 穂高
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 5
+    = f.number_field :bats, class: 'text-right w-10'
   td.border.text-center.p-1
-    | (捕)
-  td.border.text-center.p-1 森 友哉
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 6
+    = f.number_field :four_dead_ball, class: 'text-right w-10'
   td.border.text-center.p-1
-    | (三)
-  td.border.text-center.p-1 中村 剛也
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 7
+    = f.number_field :bunt, class: 'text-right w-10'
   td.border.text-center.p-1
-    | (指)
-  td.border.text-center.p-1 栗山 巧
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 8
+    = f.number_field :sacrifice_fly, class: 'text-right w-10'
   td.border.text-center.p-1
-    | (左)
-  td.border.text-center.p-1 熊代 聖人
-tr
-  td.text-center.p-1 = render 'icons/plus'
-  td.border.text-center.p-1 9
+    = f.number_field :score, class: 'text-right w-10'
   td.border.text-center.p-1
-    | (右)
-  td.border.text-center.p-1 木村 文紀
+    = f.number_field :hit, class: 'text-right w-10'
+  td.border.text-center.p-1
+    = f.number_field :rbi, class: 'text-right w-10'
+  td.border.text-center.p-1
+    = f.number_field :strikeout, class: 'text-right w-10'
+  td.border.text-center.p-1
+    = f.number_field :steal, class: 'text-right w-10'
+  td.border.text-center.p-1
+    = f.number_field :two_bases, class: 'text-right w-10'
+  td.border.text-center.p-1
+    = f.number_field :three_bases, class: 'text-right w-10'
+  td.border.text-center.p-1
+    = f.number_field :homerun, class: 'text-right w-10'
+  td.border.text-center.p-1
+    = f.number_field :error, class: 'text-right w-10'

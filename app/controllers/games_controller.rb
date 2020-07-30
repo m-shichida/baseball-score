@@ -8,6 +8,7 @@ class GamesController < ApplicationController
     @teams = Team.all
     @opponent_teams = Team.opponent_teams
     @inning_scores = @game.inning_scores.build
+    @batting_scores = @game.batter_scores.build
   end
 
   def create
